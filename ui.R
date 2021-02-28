@@ -21,7 +21,7 @@ sidebar <- dashboardSidebar(
 #====================================================#
 bodyHome <- tabItem(tabName = "main", value="main_panel",
             fluidRow(
-                      box(
+                      shinydashboard::box(
                         tags$head(tags$link(rel="shortcut icon", href="favicon.ico")),
                         tags$script(src = "js/google-analytics.js"),
                         
@@ -37,26 +37,26 @@ bodyHome <- tabItem(tabName = "main", value="main_panel",
                       )
                     ),
             fluidRow(
-              box(
+              shinydashboard::box(
                 title = "Venn module", width = 4, status = "warning",
                 p("Intervene's venn module provides up-to 6-way classical, Chow-Ruskey and Edwards’ Euler/Venn diagrams to visualize the intersections of genomic regions or lists."),
                 #p("Using battle option one can generate up-to 9 sets."),
                 img(src='venn_module.png', align = "center", width="100%")
                 
                 ),
-              box(
+              shinydashboard::box(
                 title = "UpSet module", width = 4,status = "warning",
                 p("Intervene’s UpSet modules can be used to visualize the intersection of multiple genomic region sets using UpSet plots."),
                 img(src='upset_module.png', align = "center", width="100%")
               ),
-              box(
+              shinydashboard::box(
                 title = "Pairwise module", width = 4,status = "warning",
                 p("Intervene’s pairwise module provides several styles of heatmaps and clustering approaches to customize the heatmaps."),
                 img(src='pairwise_module.png', align = "center", width="100%")
               )
             ),
             fluidRow(
-              box(
+              shinydashboard::box(
                 title = "Citation", width = 12, status = "success",
                 h4("If you use intervene, please cite this paper:"),
                 HTML("<h5>Khan A, Mathelier A. <a href='https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-017-1708-7' target='_blank'>Intervene: a tool for intersection and visualization of multiple gene or genomic region sets</a>. BMC Bioinformatics. 2017;18:287. doi: 10.1186/s12859-017-1708-7</h5>")
@@ -70,7 +70,7 @@ bodyVenn <- tabItem(tabName = "venn",
           h2("Venn diagrams"),
           
           fluidRow(
-            box( title = "Data upload & settings", width = 4, status = "warning",
+            shinydashboard::box( title = "Data upload & settings", width = 4, status = "warning",
                  tabBox(
                    id = "venntab", height = "100%", width = "100%",
                    
@@ -198,7 +198,7 @@ bodyVenn <- tabItem(tabName = "venn",
                   )
                  )
             ),
-            box(
+            shinydashboard::box(
               status = "warning", width = 8,
               tabBox(
                 # The id lets us use input$tabset1 on the server to find the current tab
@@ -207,7 +207,7 @@ bodyVenn <- tabItem(tabName = "venn",
                          
                          #htmlOutput('plot_text_p'),
                          plotOutput("vennPlot", width = "100%", height = "100%"),
-                         box(
+                         shinydashboard::box(
                            width = NULL,  status = "warning",
                            radioButtons(
                              inputId = "filetype_venn",
@@ -240,7 +240,7 @@ bodyVenn <- tabItem(tabName = "venn",
 bodyUpSet <- tabItem(tabName = "upset", value="upset_plot",
                     h2("UpSet plots"),
                     fluidRow(
-                      box(
+                      shinydashboard::box(
                         status = "warning", width = 4,
                         tabBox(
                           # The id lets us use input$tabset1 on the server to find the current tab
@@ -426,7 +426,7 @@ bodyUpSet <- tabItem(tabName = "upset", value="upset_plot",
                           )
                         )
                       ),
-                      box(
+                      shinydashboard::box(
                         status = "warning", width = 8, height = "100%",
                         tabBox(
                           #title = "First tabBox",
@@ -435,7 +435,7 @@ bodyUpSet <- tabItem(tabName = "upset", value="upset_plot",
                           tabPanel("UpSet Plot", 
                                    htmlOutput('plot_text'),
                                    plotOutput('plot1', width = "100%", height = "100%"),
-                                   box(
+                                   shinydashboard::box(
                                      width = NULL,  status = "warning",
                                      radioButtons(
                                        inputId = "filetype",
@@ -482,7 +482,7 @@ bodyUpSet <- tabItem(tabName = "upset", value="upset_plot",
 bodyPairwise <- tabItem(tabName = "pairwise",
                     h2("Pairwise intersection heatmap"),
                     fluidRow(
-                      box( title = "Data upload & settings", width = 4, status = "warning",
+                      shinydashboard::box( title = "Data upload & settings", width = 4, status = "warning",
                         tabBox(
                             id = "pairwisetab", height = "100%", width = "100%",
                           
@@ -707,7 +707,7 @@ bodyPairwise <- tabItem(tabName = "pairwise",
                           )
                         )
                       ),
-                      box(
+                      shinydashboard::box(
                         status = "warning", width = 8,
                         tabBox(
                           #title = "First tabBox",
@@ -721,7 +721,7 @@ bodyPairwise <- tabItem(tabName = "pairwise",
                                    conditionalPanel(condition = "input.plotType == 'heatmap.2'",
                                     plotOutput("heatmap2_plot_out", width = "100%", height = "100%")
                                    ),
-                                box(
+                                shinydashboard::box(
                                      width = NULL,  status = "warning",
                                      radioButtons(
                                        inputId = "filetype_heatmap",
